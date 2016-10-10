@@ -5,12 +5,23 @@
     <title>{{ greeting }} World!</title>
   </head>
   <body>
-    
+
     <p>Say something to the world
       <div>
         <input type="text" ng-model="greeting" ng-init="greeting='Peace out, '"></p>
       </div>
     <p>{{ greeting }} world!</p>
+
+    <input type="text" ng-model="name" placeholder="What is your name?" />
+    <h1>My name is: {{ name }}</h1>
+
+    <select ng-model="choice" ng-init="choice='FLUFFIES!'">
+      <option value="dogs">Dogs</option>
+      <option value="Cats">Cats</option>
+      <option value="Both">Both</option>
+      <option value="Neither">Neither</option>
+    </select>
+    <h2>I love {{ choice }}</h2>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   </body>
