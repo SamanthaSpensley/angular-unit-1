@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>{{ greeting }} World!</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
   </head>
-  <body>
+  <body ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
 
     <p>Say something to the world
       <div>
@@ -12,8 +13,8 @@
       </div>
     <p>{{ greeting }} world!</p>
 
-    <input type="text" ng-model="name" ng-init="name='BoJack'" placeholder="What is your name?" />
-    <h3>My name is: {{ name }}</h3>
+    <input type="text" ng-model="first-name" ng-init="name='BoJack'" placeholder="What is your name?" />
+    <h3>My name is: {{ first-name }}</h3>
 
     <select ng-model="choice" ng-init="choice='FLUFFIES!'">
       <option value="dogs">Dogs</option>
@@ -71,9 +72,73 @@
     <p>Yelling: {{ quote | uppercase }}</p>
     <p>Whispering: {{ quote | lowercase }}</p>
 
-    <br />
-
     <div>{{this}}</div>
+
+    <h2>1.5 Built-In Directives</h2>
+    <h3>ng-repeat</h3>
+      <ul>
+        <li ng-repeat="name in names"> <!--- names array located in body tag -->
+          {{ name }}
+        </li>
+      </ul>
+
+      <ul ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
+        <li ng-repeat="name in names">
+          {{ name }}
+        </li>
+      </ul>
+
+      <ul ng-init="symbols=['&#9824;', '&#9827;', '&#9829;', '&#9830;']">
+        <li ng-repeat="symbol in symbols">
+          {{ symbol }}
+        </li>
+      </ul>
+
+      <h4>Dealing with duplicates:</h4>
+      <ul ng-init="numbers=[1,1,2,5,6,9,9,9]">
+        <li ng-repeat="i in numbers track by $index">
+          {{ i }}
+        </li>
+      </ul>
+
+
+    <h3>ng-show/hide</h3>
+      <div ng-show='3 + 4 == 5'>
+        3 + 4 isn't 5, don't show
+      </div>
+
+      <div ng-show='3 + 4 == 7'>
+        3 + 4 is 7, do show
+      </div>
+
+      <div ng-hide='3 + 4 == 5'>
+          3 + 4 isn't 5, don't hide
+      </div>
+
+      <div ng-hide='3 + 4 == 7'>
+        3 + 4 is 7, do hide
+      </div>
+
+      <h4>Sign Up Page</h4>
+      <input type="text" ng-model="password" />
+      <p>Your password is {{ password.length }} characters</p>
+      <button ng-show="password.length == 6">Sign up!</button>
+      <p ng-show="password.length != 6">Password invalid</p>
+
+
+    <h3>ng-class</h3>
+      <div ng-class='{highlight: 4 + 4 == 8}'>4 + 4 = 8</div>
+      <div ng-class='{highlight: 4 + 4 == 10}'>4 + 4 = 10</div>
+
+      <h4>Sign Up Page</h4>
+      <input type="text" ng-model="password" />
+      <p class="red" ng-class="{green: password.length == 6}">Your password is {{ password.length }} characters</p>
+      <button ng-show="password.length == 6" >Sign up!</button>
+      <p ng-show="password.length != 6">Password invalid</p>
+
+    <h3>Camera Shop exercise (separate in Github)</h3>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   </body>
