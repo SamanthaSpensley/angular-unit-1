@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>MadLibs - Angular</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-zF4BRsG/fLiTGfR9QL82DrilZxrwgY/+du4p/c7J72zZj+FLYq4zY00RylP9ZjiT" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div ng-controller="MainController" class="container">
+      <form class="form-horizontal">
+        <fieldset>
+          <legend>MadLibs</legend>
+          <div class="form-group">
+            <label for="boyName" ng-model="boy" class="col-lg-2 control-label">Boy's Name</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="boyName" placeholder="Enter a boy's name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="adjective" class="col-lg-2 control-label">Adjective</label>
+            <div class="col-lg-10">
+              <input type="text" ng-model="adjective" class="form-control" id="adjective" placeholder="Enter an adjective">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="noun1" class="col-lg-2 control-label">Plural Noun</label>
+            <div class="col-lg-10">
+              <input type="text" ng-model="noun1" class="form-control" id="noun1" placeholder="Enter a plural noun">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="noun2" class="col-lg-2 control-label">Plural Noun</label>
+            <div class="col-lg-10">
+              <input type="text" ng-model="noun2" class="form-control" id="noun2" placeholder="Enter a plural noun">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="insect" class="col-lg-2 control-label">Insect, Plural</label>
+            <div class="col-lg-10">
+              <input type="text" ng-model="insect" class="form-control" id="insect" placeholder="Enter an insect, plural">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="noun3" ng-model="noun3" class="col-lg-2 control-label">Plural Noun</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="noun3" placeholder="Enter a plural noun">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="verb" ng-model="verb" class="col-lg-2 control-label">Verb Ending in "S"</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="verb" placeholder="Enter a verb ending in 's'">
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="reset" ng-click="reset()" class="btn btn-default">Cancel</button>
+              <button type="submit" ng-click="submit()" class="btn btn-primary">Submit</button>
+            </div>
+          </div> -->
+
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="reset" ng-click="display=false" class="btn btn-default">Cancel</button>
+              <button type="submit" ng-click="display=true" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <h3 ng-show="display">I'm in love with <span>{{ boy | uppercase }}</span>. He's so <span>{{ adjective | uppercase }}</span>! He has big flat <span>{{ noun1 | uppercase }}</span>, and when our <span>{{ noun2 | uppercase }}</span> meet, I get <span>{{ insect | uppercase }}</span> in my stomach. I've fallen for him like a ton of <span>{{ noun3 | uppercase }}</span>, and he <span>{{ verb | uppercase }}</span> for me, too. But I think he's got another girlfriend. What should I do?</h3>
+
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
