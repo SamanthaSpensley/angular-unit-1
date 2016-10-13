@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="introApp">
   <head>
     <meta charset="utf-8">
     <title>{{ greeting }} World!</title>
@@ -147,11 +147,16 @@
     <hr />
 
 
-    <!-- 1.6 Intro to Controllers -->
-    <h2>1.6 Intro to Controllers</h2>
+    <!-- 1.8 Events -->
+    <div ng-controller="EventsController">
+      <h2>1.8 Events</h2>
+
+      <h3>The number is {{ view.number }}</h3>
+    </div>
+
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="main.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
