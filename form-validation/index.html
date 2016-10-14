@@ -95,7 +95,7 @@
 
       <!-- Another form -->
       <h3>Form with Validation</h3>
-      <form name="userForm" novalidate ng-submit="submitUser()" action="#">
+      <form name="userForm" novalidate ng-submit="submitUser(userForm)" action="#">
 
         <!-- Username input -->
         <div class="form-group col-xs-12" ng-class="{'has-success': userForm.username.$valid && userFrom.username.$dirty, 'has-error': userForm.username.$invalid && userForm.username.$dirty}">
@@ -166,7 +166,7 @@
 
           <div class="error-container col-xs-8 col-xs-offset-2"
             ng-show="userForm.zip.$dirty && userForm.zip.$invalid"
-            ng-class="invalid"> 
+            ng-class="invalid">
             <span class="error" ng-show="userForm.zip.$error.required">A zip code is required. Please enter a zip code.</span>
           </div>
         </div>

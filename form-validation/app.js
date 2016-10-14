@@ -3,7 +3,7 @@ var app = angular.module('formApp', []);
 app.controller('MainController', function($scope) {
   $scope.users = [];
   $scope.user = {};
-  $scope.submitUser = function() {
+  $scope.submitUser = function(userForm) {
     $scope.users.push({
       username: $scope.user.username,
       password: $scope.user.password,
