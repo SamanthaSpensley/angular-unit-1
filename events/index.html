@@ -46,8 +46,8 @@
           <h1> {{ view.player2Score }} </h1>
 
           <h3 ng-show="view.server">Serving!</h3>
-          <h3 ng-show="view.player1Score >= 11">Loser!</h3>
-          <h3 ng-show="view.player2Score >= 11">Winner!</h3>
+          <h3 ng-show="view.player1Score >= 11" ng-class='{red: view.player1Score >= 11}'>Loser!</h3>
+          <h3 ng-show="view.player2Score >= 11" ng-class='{green: view.player2Score >= 11}'>Winner!</h3>
 
         </div>
       </div>

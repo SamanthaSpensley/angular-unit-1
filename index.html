@@ -150,9 +150,18 @@
     <!-- 1.8 Events -->
     <div ng-controller="EventsController">
       <h2>1.8 Events</h2>
-
       <h3>The number is {{ view.number }}</h3>
     </div>
+
+    <!-- 1.9 Form Validation -->
+    <h2>1.9 Form Validation</h2>
+    <form name="signup_form" novalidate action="#">
+      <label for="firstname">First Name: </label>
+      <input type="text" id="firstname" ng-model="signup.first" required>
+      <label for="lastname">Last Name: </label>
+      <input type="text" id="lastname" ng-model="signup.first" required>
+      <input type="submit" value="Click me!">
+    </form>
 
 
     <!-- Scripts -->
