@@ -12,3 +12,10 @@
   border-style: solid;
   border-width: 6px;
 }
+
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}

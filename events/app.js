@@ -18,17 +18,18 @@ app.controller('MainController', function($scope){
   // Ping Pong
   $scope.view.player1Score = 0;
   $scope.view.player2Score = 0;
-  $scope.view.server = true;
-  $scope.view.serveCount = 0;
+  $scope.view.server = false;
+  $scope.view.serveCount = 1;
   $scope.view.winner = '';
   $scope.view.gameover = false;
 
   $scope.addScore1 = function() {
     if($scope.view.gameover === false) {
-      $scope.view.player1Score += 1;
-      if($scope.view.serveCount % 2 === 0) {
+      $scope.view.player1Score++;
+      $scope.view.serveCount++;
+      if($scope.view.serveCount % 2 === 1) {
         $scope.view.server = true;
-      } else if ($scope.view.serveCount % 2 !== 0) {
+      } else {
         $scope.view.server = false;
       }
       if($scope.view.player1Score >= 11) {
@@ -41,11 +42,11 @@ app.controller('MainController', function($scope){
 
   $scope.addScore2 = function() {
     if($scope.view.gameover === false) {
-      $scope.view.player2Score += 1;
+      $scope.view.player2Score++;
       $scope.view.serveCount++;
-      if($scope.view.serveCount % 2 === 0) {
+      if($scope.view.serveCount % 2 === 1) {
         $scope.view.server = true;
-      } else if ($scope.view.serveCount % 2 !== 0) {
+      } else {
         $scope.view.server = false;
       }
       if($scope.view.player2Score >= 11) {

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html ng-app="formApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Validation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
+    <link href="main.css" />
+  </head>
+  <body ng-controller="MainController">
+    <div class="container">
+
+      <!-- Signup form -->
+      <h3>Signup Form with Validation</h3>
+      <form name="signup_form" novalidate ng-submit="signupForm()">
+
+        <!-- Name input -->
+        <div class="col-xs-12">
+          <label class="col-xs-2">Name</label>
+          <input type="text"
+              placeholder="Name"
+              name="name"
+              ng-model="signup.name"
+              ng-minlength=3
+              ng-maxlength=20
+              class="col-xs-8"
+              required />
+          <div class="error-container col-xs-8 col-xs-offset-2" ng-show="signup_form.name.$dirty && signup_form.name.$invalid">
+            <small class="error" ng-show="signup_form.name.$error.required">Your name is required.</small>
+            <small class="error" ng-show="signup_form.name.$error.minlength">Your name is required to be at least 3 characters.</small>
+            <small class="error" ng-show="signup_form.name.$error.maxlength">Your name cannot be longer than 20 characters</small>
+          </div>
+        </div>
+
+        <!-- Email input -->
+        <div class="col-xs-12">
+          <label class="col-xs-2">Email</label>
+          <input type="email"
+            placeholder="Email"
+            name="email"
+            ng-model="signup.email"
+            ng-minlength=3
+            ng-maxlength=20
+            class="col-xs-8"
+            required />
+          <div class="error-container col-xs-8 col-xs-offset-2" ng-show="signup_form.email.$dirty && signup_form.email.$invalid">
+            <small class="error" ng-show="signup_form.email.$error.required">Your email is required.</small>
+            <small class="error" ng-show="signup_form.email.$error.minlength">Your email is required to be at least 3 characters.</small>
+            <small class="error" ng-show="signup_form.email.$error.email">That is not a valid email. Please input a valid email.</small>
+            <small class="error" ng-show="signup_form.email.$error.maxlength">Your email cannot be longer than 20 characters.</small>
+          </div>
+        </div>
+
+        <!-- Username input -->
+        <div class="col-xs-12">
+          <label class="col-xs-2">Username</label>
+          <input  type="text"
+            placeholder="Desired username"
+            name="username"
+            ng-model="signup.username"
+            ng-minlength=3
+            ng-maxlength=20
+            class="col-xs-8"
+            required />
+          <div class="error-container col-xs-8 col-xs-offset-2" ng-show="signup_form.username.$dirty && signup_form.username.$invalid">
+            <small class="error" ng-show="signup_form.username.$error.required">Please input a username</small>
+            <small class="error" ng-show="signup_form.username.$error.minlength">Your username is required to be at least 3 characters</small>
+            <small class="error" ng-show="signup_form.username.$error.maxlength">Your username cannot be longer than 20 characters</small>
+            <small class="error" ng-show="signup_form.username.$error.unique">That username is taken, please try another</small>
+          </div>
+        </div>
+      </form>
+
+
+      <!-- Quiz form -->
+      <h3>Quiz Form</h3>
+      <form name="quizForm" novalidate ng-submit="submitForm()" action="#">
+
+      <!-- Question input -->
+        <div class="col-xs-12">
+          <label class="col-xs-2">Question</label>
+          <input type="text" name="question" ng-model="quiz.question" ng-class="{'valid': quizForm.question.$valid}" required />
+          <p ng-show="quizForm.question.$invalid">
+            Please enter a valid question.
+          </p>
+        </div>
+
+        <!-- Answer input -->
+        <div class="col-xs-12">
+          <label class="col-xs-2">Answer</label>
+          <input type="text" name="answer" ng-model="form.answer" ng-minlength=4 ng-class="{'correct': quizForm.answer.$valid && quizForm.answer.$dirty}" required />
+          <input type="submit" value="Submit" class="col-xs-offset-1">
+        </div>
+      </form>
+
+
+      <!-- Another form -->
+      <h3>Form with Validation</h3>
+      <form name="userForm" novalidate ng-submit="submitUser()" action="#">
+
+        <!-- Username input -->
+        <div class="form-group col-xs-12" ng-class="{'has-success': userForm.username.$valid && userFrom.username.$dirty, 'has-error': userForm.username.$invalid && userForm.username.$dirty}">
+          <label class="col-xs-2">Username</label>
+          <input type="text" class="col-xs-8"
+          name="username"
+          placeholder="Username"
+          ng-model="user.username"
+          ng-minlength=3
+          ng-maxlength=12
+          required/>
+
+          <div class="error-container col-xs-8 col-xs-offset-2"
+            ng-show="userForm.username.$dirty && userForm.username.$invalid"
+            ng-class="invalid">
+            <span class="error" ng-show="userForm.username.$error.required">A username is required. Please enter a username.</span>
+            <span class="error" ng-show="userForm.username.$error.minlength">Your username is required to be at least 3 characters.</span>
+            <span class="error" ng-show="userForm.username.$error.maxlength">Your username cannot be longer than 12 characters.</span>
+          </div>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-group col-xs-12" ng-class="{'has-success': userForm.password.$valid && userFrom.password.$dirty, 'has-error': userForm.password.$invalid && userForm.password.$dirty}">
+          <label class="col-xs-2">Password</label>
+          <input type="password" class="col-xs-8"
+          name="password"
+          placeholder="password"
+          ng-model="user.password"
+          ng-minlength=3
+          ng-maxlength=12
+          required/>
+
+          <div class="error-container col-xs-8 col-xs-offset-2"
+            ng-show="userForm.password.$dirty && userForm.password.$invalid"
+            ng-class="invalid">
+            <span class="error" ng-show="userForm.password.$error.required">A password is required. Please enter a password.</span>
+            <span class="error" ng-show="userForm.password.$error.minlength">Your password must be at least 3 characters.</span>
+            <span class="error" ng-show="userForm.password.$error.maxlength">Your password cannot be longer than 12 characters.</span>
+          </div>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-group col-xs-12" ng-class="{'has-success': userForm.email.$valid && userFrom.email.$dirty, 'has-error': userForm.email.$invalid && userForm.email.$dirty}">
+          <label class="col-xs-2">Email</label>
+          <input type="email" class="col-xs-8"
+          name="email"
+          placeholder="Email"
+          ng-model="user.email"
+          required/>
+
+          <div class="error-container col-xs-8 col-xs-offset-2"
+            ng-show="userForm.email.$dirty && userForm.email.$invalid"
+            ng-class="invalid">
+            <span class="error" ng-show="userForm.email.$error.required">Email is required. Please enter an email.</span>
+            <span class="error" ng-show="userForm.email.$error.email">Please enter a valid email.</span>
+          </div>
+        </div>
+
+        <!-- Zip input -->
+        <div class="form-group col-xs-12" ng-class="{'has-success': userForm.zip.$valid && userFrom.zip.$dirty, 'has-error': userForm.zip.$invalid && userForm.zip.$dirty}">
+          <label class="col-xs-2">Zip Code</label>
+          <input type="number" class="col-xs-8"
+          name="zip"
+          placeholder="Zip Code"
+          ng-model="user.zip"
+          ng-pattern="/^(\d{5}-\d{4}|\d{5})$/"
+          required/>
+
+          <div class="error-container col-xs-8 col-xs-offset-2"
+            ng-show="userForm.zip.$dirty && userForm.zip.$invalid"
+            ng-class="invalid"> 
+            <span class="error" ng-show="userForm.zip.$error.required">A zip code is required. Please enter a zip code.</span>
+          </div>
+        </div>
+
+        <div class="form-group col-xs-12">
+          <input type="submit" class="btn btn-primary col-xs-offset-2" value="Submit" ng-disabled="userForm.$invalid" />
+        </div>
+      </form>
+
+      <div>
+        <h3>Here are our users:</h3>
+        <p ng-show="users.length >= 1"> {{ users }}</p>
+      </div>
+
+
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
